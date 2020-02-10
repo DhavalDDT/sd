@@ -113,25 +113,41 @@ int main()
     {
         int m,n;
         cout<<"For state "<<i<<":\n";
-        cout<<"Enter the number of possible transitions for 0(for null, no of transitions is 1): ";
+        cout<<"Enter the number of possible transitions for 0: ";
         cin>>m;
-        nfa[i][1].resize(m);
-        cout<<"Enter states that can be traversed at occurrence of 0(for null enter -1): ";
-        for(int j=0;j<m;j++)
+        if(m!=0)
         {
-            int t;
-            cin>>t;
-            nfa[i][1][j]=t;
+            nfa[i][1].resize(m);
+            cout<<"Enter states that can be traversed at occurrence of 0: ";
+            for(int j=0;j<m;j++)
+            {
+                int t;
+                cin>>t;
+                nfa[i][1][j]=t;
+            }
         }
-        cout<<"Enter the number of possible transitions for 1(for null, no of transitions is 1): ";
-        cin>>n;
-        nfa[i][2].resize(n);
-        cout<<"Enter states that can be traversed at occurrence of 1(for null enter -1): ";
-        for(int j=0;j<n;j++)
+        else
         {
-            int t;
-            cin>>t;
-            nfa[i][2][j]=t;
+            nfa[i][1].resize(1);
+            nfa[i][1][0]=-1;
+        }
+        cout<<"Enter the number of possible transitions for 1: ";
+        cin>>n;
+        if(n!=0)
+        {
+            nfa[i][2].resize(n);
+            cout<<"Enter states that can be traversed at occurrence of 1: ";
+            for(int j=0;j<n;j++)
+            {
+                int t;
+                cin>>t;
+                nfa[i][2][j]=t;
+            }
+        }
+        else
+        {
+            nfa[i][2].resize(1);
+            nfa[i][2][0]=-1;
         }
     }
     //cout<<nfa[0][2][0]<<"\n";
